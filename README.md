@@ -1,0 +1,1 @@
+# Ativador-Windows-Management-Instrumentation
