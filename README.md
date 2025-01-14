@@ -1,4 +1,4 @@
-# README - Script de Diagnóstico e Reparação do WMI no Windows
+# Script de Diagnóstico e Reparação do WMI no Windows
 
 ## Descrição
 Este script foi desenvolvido para verificar, ativar e reparar o serviço WMI (Windows Management Instrumentation) em sistemas Windows. Ele também inclui um sistema de registro de logs para monitoramento das operações realizadas.
