@@ -1,64 +1,64 @@
-# Script de Diagnóstico e Reparação do WMI no Windows
+# WMI Diagnostic and Repair Script for Windows
 
-## Descrição
-Este script foi desenvolvido para verificar, ativar e reparar o serviço WMI (Windows Management Instrumentation) em sistemas Windows. Ele também inclui um sistema de registro de logs para monitoramento das operações realizadas.
-
----
-
-## Funcionalidades
-
-1. **Verificação de Execução como Administrador**  
-   O script verifica se está sendo executado com permissões administrativas, necessárias para manipular serviços do sistema e modificar arquivos em diretórios protegidos.
-
-2. **Logs de Diagnóstico**  
-   Cria e grava logs detalhados no arquivo `C:\Windows\Temp\wmi_status.txt` para registrar o status do WMI e qualquer ação corretiva tomada.
-
-3. **Diagnóstico do WMI**  
-   Usa a biblioteca `win32com.client` para tentar uma conexão com o serviço WMI e verifica seu status.
-
-4. **Ativação do WMI**  
-   Se o serviço WMI estiver parado, o script tenta ativá-lo usando o comando `sc start winmgmt`.
-
-5. **Reparo do WMI**  
-   Se a verificação do WMI falhar, o script tenta reparar o repositório WMI com os comandos `winmgmt /verifyrepository` e `winmgmt /salvagerepository`.
+## Description  
+This script was developed to check, activate, and repair the WMI (Windows Management Instrumentation) service on Windows systems. It also includes a logging system to monitor the operations performed.
 
 ---
 
-## Requisitos
-- Python instalado no sistema.
-- Módulo `pywin32` para interagir com o WMI.  
-  Pode ser instalado com:
+## Features
+
+1. **Administrator Privilege Check**  
+   The script checks whether it is being run with administrative privileges, which are required to manipulate system services and modify files in protected directories.
+
+2. **Diagnostic Logs**  
+   Creates and writes detailed logs to the file `C:\Windows\Temp\wmi_status.txt` to record the status of WMI and any corrective actions taken.
+
+3. **WMI Diagnostic**  
+   Uses the `win32com.client` library to attempt a connection with the WMI service and check its status.
+
+4. **WMI Activation**  
+   If the WMI service is stopped, the script attempts to start it using the `sc start winmgmt` command.
+
+5. **WMI Repair**  
+   If the WMI check fails, the script attempts to repair the WMI repository using the commands `winmgmt /verifyrepository` and `winmgmt /salvagerepository`.
+
+---
+
+## Requirements
+- Python must be installed on the system.
+- The `pywin32` module is required to interact with WMI.  
+  You can install it with:
   ```bash
   pip install pywin32
   ```
 
 ---
 
-## Uso
-1. Certifique-se de executar o script com permissões de administrador.  
-   - Se não for iniciado como administrador, o script tentará se reiniciar com permissões elevadas.
-2. O resultado das operações será salvo no log `C:\Windows\Temp\wmi_status.txt`.
-3. O script imprime mensagens de status no console para fácil monitoramento durante a execução.
+## Usage
+1. Make sure to run the script with administrator privileges.  
+   - If not started as administrator, the script will attempt to relaunch itself with elevated privileges.
+2. The result of the operations will be saved in the log file `C:\Windows\Temp\wmi_status.txt`.
+3. The script prints status messages to the console for easy monitoring during execution.
 
 ---
 
-## Notas e Considerações
-- **Compatibilidade:** Este script é projetado para sistemas Windows.  
-- **Riscos Potenciais:** Manipular o WMI pode afetar serviços críticos do sistema. Use com cautela e somente se for necessário.
-- **Exclusão de Logs Antigos:** O arquivo de log anterior é excluído antes de criar um novo para manter o relatório atualizado e evitar crescimento excessivo do arquivo.
+## Notes and Considerations
+- **Compatibility:** This script is designed for Windows systems.  
+- **Potential Risks:** Manipulating WMI may affect critical system services. Use with caution and only if necessary.
+- **Old Log Deletion:** The previous log file is deleted before creating a new one to keep the report up to date and prevent excessive file growth.
 
 ---
 
-## Limitações
-- Se o script não conseguir obter permissões de administrador, ele não poderá executar diagnósticos ou reparos no WMI.
-- Depende de comandos internos do Windows (`sc`, `winmgmt`), que podem variar entre diferentes versões do sistema.
+## Limitations
+- If the script fails to obtain administrator permissions, it will not be able to perform WMI diagnostics or repairs.
+- It relies on internal Windows commands (`sc`, `winmgmt`), which may vary between different Windows versions.
 
 ---
 
 ## Changelog
-- Versão 1.0: Primeira versão funcional com diagnóstico, ativação e reparo do WMI.
+- Version 1.0: Initial functional version with WMI diagnostic, activation, and repair.
 
 ---
 
-## Contribuições
-Sugestões de melhorias e novas funcionalidades são bem-vindas.
+## Contributions
+Suggestions for improvements and new features are welcome.
